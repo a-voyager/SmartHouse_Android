@@ -117,6 +117,7 @@ public class MainPresenter implements IPresenter {
 
     private void alarmTmpHum(int mTemperature) {
         if (mTemperature > Constants.MAX_TEMPPERATURE) {
+            mIMainView.setTmpIcon2Red();
             mIMainView.showSnackBarAction("温度过高, 即将开启窗户", "撤销", new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -124,8 +125,8 @@ public class MainPresenter implements IPresenter {
                 }
             });
             mHandler.sendEmptyMessageDelayed(OPEN_WINDOW, 2000);
-        }
-        if (mTemperature < Constants.MIN_TEMPPERATURE) {
+        } else if (mTemperature < Constants.MIN_TEMPPERATURE) {
+            mIMainView.setTmpIcon2Blue();
             mIMainView.showSnackBarAction("温度过低, 即将关闭窗户", "撤销", new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -133,6 +134,8 @@ public class MainPresenter implements IPresenter {
                 }
             });
             mHandler.sendEmptyMessageDelayed(CLOSE_WINDOW, 2000);
+        } else {
+            mIMainView.setTmpIcon2Blue();
         }
     }
 

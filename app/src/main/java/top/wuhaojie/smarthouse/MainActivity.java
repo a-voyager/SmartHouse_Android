@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.ImageView;
@@ -79,6 +80,9 @@ public class MainActivity extends BaseActivity implements IMainView {
                 mMainPresenter.onRefresh();
             }
         });
+        // 程序启动后需要刷新状态
+        mSflMain.setRefreshing(true);
+        mMainPresenter.onRefresh();
     }
 
     @Override
@@ -116,6 +120,18 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void showSnackBarAction(String msg, String action, View.OnClickListener onClickListener) {
         SnackBarUtils.showAction(mClMain, msg, action, onClickListener);
+    }
+
+    @Override
+    public void setTmpIcon2Red() {
+        mIvTmp.setImageResource(R.drawable.ic_temp_red);
+        mTvCurrTmp.setTextColor(ContextCompat.getColor(this, R.color.red08));
+    }
+
+    @Override
+    public void setTmpIcon2Blue() {
+        mIvTmp.setImageResource(R.drawable.ic_temp_blue);
+        mTvCurrTmp.setTextColor(ContextCompat.getColor(this, R.color.dark_gray));
     }
 
 }

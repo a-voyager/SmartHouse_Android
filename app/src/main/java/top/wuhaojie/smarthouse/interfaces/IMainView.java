@@ -24,4 +24,8 @@ public interface IMainView extends IView {
     void setInfo(MostValueBean mostValueBean);
 
     void showSnackBarAction(String msg, String action, View.OnClickListener onClickListener);
+
+    void setTmpIcon2Red();
+
+    void setTmpIcon2Blue();
 }
