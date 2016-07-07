@@ -45,6 +45,8 @@ public class MainActivity extends BaseActivity implements IMainView {
     SwipeRefreshLayout mSflMain;
     @BindView(R.id.fab)
     FloatingActionButton mFab;
+    @BindView(R.id.tv_curr_humi)
+    TextView mTvCurrHumi;
 
 
     @Override
@@ -101,6 +103,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void setInfo(ResponseEntity.MInfoItemsBean itemsBean) {
         mTvCurrTmp.setText(itemsBean.getMTemperature() + "℃");
+        mTvCurrHumi.setText(itemsBean.getMHumidity() + "%");
     }
 
     @Override

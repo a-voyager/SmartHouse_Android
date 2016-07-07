@@ -14,8 +14,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include layout="@layout/card_temperature"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+            <include layout="@layout/card_temperature"/>
+
+            <include layout="@layout/card_humidity"/>
+        </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.v4.widget.SwipeRefreshLayout>
 

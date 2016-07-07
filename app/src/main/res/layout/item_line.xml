@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="160dp"
+              android:layout_height="match_parent"
+              android:layout_gravity="center_horizontal"
+              android:orientation="vertical"
+              tools:showIn="@layout/card_humidity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="40RH"
+            android:textColor="#55aa2f"
+            android:textSize="10sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="70RH"
+            android:textColor="#f7a905"
+            android:textSize="10sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="90RH"
+            android:textColor="#ed4f4f"
+            android:textSize="10sp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:layout_weight="1"
+            android:background="#2f91ce"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:layout_weight="1"
+            android:background="#55aa2f"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:layout_weight="1"
+            android:background="#f7a905"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:layout_weight="1"
+            android:background="#ed4f4f"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="过低"
+            android:textColor="#2f91ce"
+            android:textSize="10sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="舒适"
+            android:textColor="#55aa2f"
+            android:textSize="10sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="偏高"
+            android:textColor="#f7a905"
+            android:textSize="10sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="过高"
+            android:textColor="#ed4f4f"
+            android:textSize="10sp"/>
+    </LinearLayout>
+
+</LinearLayout>
