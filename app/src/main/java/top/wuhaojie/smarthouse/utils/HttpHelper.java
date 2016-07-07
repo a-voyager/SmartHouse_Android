@@ -7,6 +7,7 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import top.wuhaojie.smarthouse.api.ApiService;
+import top.wuhaojie.smarthouse.entities.MostValueBean;
 import top.wuhaojie.smarthouse.entities.ResponseEntity;
 
 /**
@@ -44,6 +45,15 @@ public class HttpHelper {
 
     public void getLastInfo(Subscriber<ResponseEntity> subscriber) {
         mApiService.getLastInfo()
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+
+    public void getMostValue(String type, Subscriber<MostValueBean> subscriber) {
+        mApiService.getMostValue(type)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

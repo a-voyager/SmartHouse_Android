@@ -2,12 +2,14 @@ package top.wuhaojie.smarthouse.presenter.impl;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 
 import javax.inject.Inject;
 
 import rx.Subscriber;
 import top.wuhaojie.smarthouse.R;
 import top.wuhaojie.smarthouse.base.interfaces.IView;
+import top.wuhaojie.smarthouse.entities.MostValueBean;
 import top.wuhaojie.smarthouse.entities.ResponseEntity;
 import top.wuhaojie.smarthouse.injector.scrope.ContextLifeCycle;
 import top.wuhaojie.smarthouse.interfaces.IMainView;
@@ -87,6 +89,22 @@ public class MainPresenter implements IPresenter {
                     return;
                 }
                 mIMainView.setInfo(responseEntity.getMInfoItems().get(0));
+            }
+        });
+        HttpHelper.getInstance().getMostValue("temperature", new Subscriber<MostValueBean>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.e(getClass().getSimpleName(), "错误！" + e.getMessage());
+            }
+
+            @Override
+            public void onNext(MostValueBean mostValueBean) {
+                mIMainView.setInfo(mostValueBean);
             }
         });
     }

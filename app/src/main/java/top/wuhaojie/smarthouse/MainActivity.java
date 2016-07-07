@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import top.wuhaojie.smarthouse.base.BaseActivity;
 import top.wuhaojie.smarthouse.base.BaseApplication;
+import top.wuhaojie.smarthouse.entities.MostValueBean;
 import top.wuhaojie.smarthouse.entities.ResponseEntity;
 import top.wuhaojie.smarthouse.injector.component.ActivityComponent;
 import top.wuhaojie.smarthouse.injector.component.DaggerActivityComponent;
@@ -100,6 +101,12 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void setInfo(ResponseEntity.MInfoItemsBean itemsBean) {
         mTvCurrTmp.setText(itemsBean.getMTemperature() + "℃");
+    }
+
+    @Override
+    public void setInfo(MostValueBean mostValueBean) {
+        mTvMaxTmp.setText("" + mostValueBean.getMax());
+        mTvMinTmp.setText("" + mostValueBean.getMin());
     }
 
 }

@@ -3,6 +3,7 @@ package top.wuhaojie.smarthouse.interfaces;
 import android.support.annotation.StringRes;
 
 import top.wuhaojie.smarthouse.base.interfaces.IView;
+import top.wuhaojie.smarthouse.entities.MostValueBean;
 import top.wuhaojie.smarthouse.entities.ResponseEntity;
 
 /**
@@ -18,4 +19,6 @@ public interface IMainView extends IView {
     void showRefreshError();
 
     void setInfo(ResponseEntity.MInfoItemsBean responseEntity);
+
+    void setInfo(MostValueBean mostValueBean);
 }
