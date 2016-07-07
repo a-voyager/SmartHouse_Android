@@ -6,4 +6,10 @@ package top.wuhaojie.smarthouse.constant;
 public interface Constants {
 
     String TEMPERATURE_TYPE = "temperature";
+    int MAX_TEMPPERATURE = 30;
+    int MIN_TEMPPERATURE = 18;
+
+
+    String COMMAND_OPEN_WINDOW = "open-window";
+    String COMMAND_CLOSE_WINDOW = "close-window";
 }

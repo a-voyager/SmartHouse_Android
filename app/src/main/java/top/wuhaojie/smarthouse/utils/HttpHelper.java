@@ -7,6 +7,7 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import top.wuhaojie.smarthouse.api.ApiService;
+import top.wuhaojie.smarthouse.entities.MessageEntity;
 import top.wuhaojie.smarthouse.entities.MostValueBean;
 import top.wuhaojie.smarthouse.entities.ResponseEntity;
 
@@ -58,6 +59,30 @@ public class HttpHelper {
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
+    }
+
+
+    public void sendControlMessage(String message) {
+        mApiService.sendMessage(new MessageEntity(0, message))
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<String>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+
+                    }
+                });
     }
 
 }

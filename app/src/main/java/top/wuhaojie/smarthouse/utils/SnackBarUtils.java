@@ -34,6 +34,12 @@ public class SnackBarUtils {
                 .show();
     }
 
+    public static void showAction(View view, String message, String action, View.OnClickListener listener) {
+        Snackbar.make(view, message, Snackbar.LENGTH_SHORT)
+                .setAction(action, listener)
+                .show();
+    }
+
     public static void showAction(Activity activity, int message, int action, View.OnClickListener listener) {
         View view = activity.getWindow().getDecorView();
         showAction(view, message, action, listener);

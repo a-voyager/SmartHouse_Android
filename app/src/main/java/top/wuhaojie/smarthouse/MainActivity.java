@@ -5,6 +5,7 @@ import android.support.annotation.StringRes;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -110,6 +111,11 @@ public class MainActivity extends BaseActivity implements IMainView {
     public void setInfo(MostValueBean mostValueBean) {
         mTvMaxTmp.setText("" + mostValueBean.getMax());
         mTvMinTmp.setText("" + mostValueBean.getMin());
+    }
+
+    @Override
+    public void showSnackBarAction(String msg, String action, View.OnClickListener onClickListener) {
+        SnackBarUtils.showAction(mClMain, msg, action, onClickListener);
     }
 
 }

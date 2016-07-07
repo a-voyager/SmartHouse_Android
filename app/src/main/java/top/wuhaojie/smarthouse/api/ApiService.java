@@ -1,9 +1,11 @@
 package top.wuhaojie.smarthouse.api;
 
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 import rx.Observable;
+import top.wuhaojie.smarthouse.entities.MessageEntity;
 import top.wuhaojie.smarthouse.entities.MostValueBean;
 import top.wuhaojie.smarthouse.entities.ResponseEntity;
 
@@ -17,5 +19,8 @@ public interface ApiService {
 
     @GET("most-value.action")
     Observable<MostValueBean> getMostValue(@Query("type") String type);
+
+    @POST("send-control.action")
+    Observable<String> sendMessage(@Body MessageEntity messageEntity);
 
 }

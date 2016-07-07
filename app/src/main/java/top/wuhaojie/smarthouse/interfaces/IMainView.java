@@ -1,6 +1,7 @@
 package top.wuhaojie.smarthouse.interfaces;
 
 import android.support.annotation.StringRes;
+import android.view.View;
 
 import top.wuhaojie.smarthouse.base.interfaces.IView;
 import top.wuhaojie.smarthouse.entities.MostValueBean;
@@ -21,4 +22,6 @@ public interface IMainView extends IView {
     void setInfo(ResponseEntity.MInfoItemsBean responseEntity);
 
     void setInfo(MostValueBean mostValueBean);
+
+    void showSnackBarAction(String msg, String action, View.OnClickListener onClickListener);
 }
