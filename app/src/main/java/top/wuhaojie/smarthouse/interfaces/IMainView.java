@@ -9,4 +9,6 @@ import top.wuhaojie.smarthouse.base.interfaces.IView;
  */
 public interface IMainView extends IView {
     void showSnackBarMsg(@StringRes int msg);
+
+    void showSnackBarMsg(String msg);
 }

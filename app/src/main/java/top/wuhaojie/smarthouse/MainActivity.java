@@ -47,11 +47,15 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     public void initViews(Bundle savedInstanceState) {
-
     }
 
     @Override
     public void showSnackBarMsg(@StringRes int msg) {
+        SnackBarUtils.show(mClMain, msg);
+    }
+
+    @Override
+    public void showSnackBarMsg(String msg) {
         SnackBarUtils.show(mClMain, msg);
     }
 

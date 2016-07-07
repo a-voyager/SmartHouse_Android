@@ -13,7 +13,17 @@ public class SnackBarUtils {
                 .show();
     }
 
+    public static void show(View view, String message) {
+        Snackbar.make(view, message, Snackbar.LENGTH_SHORT)
+                .show();
+    }
+
     public static void show(Activity activity, int message) {
+        View view = activity.getWindow().getDecorView();
+        show(view, message);
+    }
+
+    public static void show(Activity activity, String message) {
         View view = activity.getWindow().getDecorView();
         show(view, message);
     }
