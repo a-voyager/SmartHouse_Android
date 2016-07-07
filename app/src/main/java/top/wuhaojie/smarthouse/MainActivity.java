@@ -13,6 +13,7 @@ import android.widget.TextView;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import top.wuhaojie.smarthouse.base.BaseActivity;
 import top.wuhaojie.smarthouse.base.BaseApplication;
 import top.wuhaojie.smarthouse.entities.MostValueBean;
@@ -49,6 +50,29 @@ public class MainActivity extends BaseActivity implements IMainView {
     FloatingActionButton mFab;
     @BindView(R.id.tv_curr_humi)
     TextView mTvCurrHumi;
+
+    @BindView(R.id.iv_curtain)
+    ImageView mIvCurtain;
+
+
+    @OnClick(R.id.cv_curtain)
+    void onCurtainClick() {
+
+    }
+
+    @BindView(R.id.iv_fan)
+    ImageView mIvFan;
+
+    @OnClick(R.id.cv_fan)
+    void onFanClick() {
+    }
+
+    @BindView(R.id.iv_alarm)
+    ImageView mIvAlarm;
+
+    @OnClick(R.id.cv_alarm)
+    void onAlarmClick() {
+    }
 
 
     @Override
