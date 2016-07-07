@@ -2,10 +2,11 @@ package top.wuhaojie.smarthouse;
 
 import android.os.Bundle;
 import android.support.annotation.StringRes;
+import android.support.design.widget.CoordinatorLayout;
 
 import javax.inject.Inject;
 
-import butterknife.OnClick;
+import butterknife.BindView;
 import top.wuhaojie.smarthouse.base.BaseActivity;
 import top.wuhaojie.smarthouse.base.BaseApplication;
 import top.wuhaojie.smarthouse.injector.component.ActivityComponent;
@@ -20,10 +21,9 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Inject
     MainPresenter mMainPresenter;
-    @OnClick(R.id.btn)
-    void onClick(){
-        mMainPresenter.sendMsg();
-    }
+    @BindView(R.id.cl_main)
+    CoordinatorLayout mClMain;
+
 
     @Override
     protected void initializePresenter() {
@@ -52,7 +52,7 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     public void showSnackBarMsg(@StringRes int msg) {
-        SnackBarUtils.show(this, msg);
+        SnackBarUtils.show(mClMain, msg);
     }
 
 }
