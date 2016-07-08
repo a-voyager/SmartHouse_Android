@@ -53,6 +53,10 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @BindView(R.id.iv_curtain)
     ImageView mIvCurtain;
+    @BindView(R.id.iv_smoke)
+    ImageView mIvSmoke;
+    @BindView(R.id.tv_curr_smoke)
+    TextView mTvCurrSmoke;
 
 
     @OnClick(R.id.cv_curtain)
@@ -105,8 +109,8 @@ public class MainActivity extends BaseActivity implements IMainView {
             }
         });
         // 程序启动后需要刷新状态
-        mSflMain.setRefreshing(true);
-        mMainPresenter.onRefresh();
+//        mSflMain.setRefreshing(true);
+//        mMainPresenter.onRefresh();
     }
 
     @Override
@@ -133,6 +137,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     public void setInfo(ResponseEntity.MInfoItemsBean itemsBean) {
         mTvCurrTmp.setText(itemsBean.getMTemperature() + "℃");
         mTvCurrHumi.setText(itemsBean.getMHumidity() + "%");
+        mTvCurrSmoke.setText(itemsBean.getMSmoke() + "");
     }
 
     @Override

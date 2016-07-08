@@ -11,13 +11,17 @@
     tools:showIn="@layout/activity_main">
 
     <android.support.v4.widget.NestedScrollView
+        android:overScrollMode="always"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:overScrollMode="always"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <include layout="@layout/card_smoke"/>
 
             <include layout="@layout/card_temperature"/>
 
@@ -48,6 +52,7 @@
 
 
             </LinearLayout>
+
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

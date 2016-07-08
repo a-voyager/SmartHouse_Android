@@ -18,7 +18,7 @@ public class HttpHelper {
 
     private Retrofit mRetrofit;
 
-    private static final String BASE_URL = "http://192.168.1.185:8080/";
+    private static final String BASE_URL = "http://192.168.1.101:8080/";
 
     private static final int DEFAULT_TIMEOUT = 10;
     private final ApiService mApiService;
