@@ -145,6 +145,27 @@ public class MainPresenter implements IPresenter {
 
     private Handler mHandler = new MyHandler();
 
+    public void switchCurtain(boolean currIsOpen) {
+        if (currIsOpen)
+            HttpHelper.getInstance().sendControlMessage(Constants.COMMAND_OPEN_WINDOW);
+        else
+            HttpHelper.getInstance().sendControlMessage(Constants.COMMAND_CLOSE_WINDOW);
+    }
+
+    public void switchFan(boolean currIsOpen) {
+        if (currIsOpen)
+            HttpHelper.getInstance().sendControlMessage(Constants.COMMAND_OPEN_FAN);
+        else
+            HttpHelper.getInstance().sendControlMessage(Constants.COMMAND_CLOSE_FAN);
+    }
+
+    public void switchAlarm(boolean currIsOpen) {
+        if (currIsOpen)
+            HttpHelper.getInstance().sendControlMessage(Constants.COMMAND_OPEN_ALARM);
+        else
+            HttpHelper.getInstance().sendControlMessage(Constants.COMMAND_CLOSE_ALARM);
+    }
+
     private static class MyHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {

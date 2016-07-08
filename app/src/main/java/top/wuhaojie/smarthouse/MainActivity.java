@@ -3,7 +3,6 @@ package top.wuhaojie.smarthouse;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 import top.wuhaojie.smarthouse.base.BaseActivity;
 import top.wuhaojie.smarthouse.base.BaseApplication;
 import top.wuhaojie.smarthouse.entities.MostValueBean;
@@ -23,6 +21,7 @@ import top.wuhaojie.smarthouse.injector.component.DaggerActivityComponent;
 import top.wuhaojie.smarthouse.injector.module.ActivityModule;
 import top.wuhaojie.smarthouse.interfaces.IMainView;
 import top.wuhaojie.smarthouse.presenter.impl.MainPresenter;
+import top.wuhaojie.smarthouse.ui.SwitchView;
 import top.wuhaojie.smarthouse.utils.SnackBarUtils;
 
 public class MainActivity extends BaseActivity implements IMainView {
@@ -46,37 +45,17 @@ public class MainActivity extends BaseActivity implements IMainView {
     TextView mTvCurrTmp;
     @BindView(R.id.sfl_main)
     SwipeRefreshLayout mSflMain;
-    @BindView(R.id.fab)
-    FloatingActionButton mFab;
+    @BindView(R.id.tv_curr_smoke)
+    TextView mTvCurrSmoke;
     @BindView(R.id.tv_curr_humi)
     TextView mTvCurrHumi;
 
-    @BindView(R.id.iv_curtain)
-    ImageView mIvCurtain;
-    @BindView(R.id.iv_smoke)
-    ImageView mIvSmoke;
-    @BindView(R.id.tv_curr_smoke)
-    TextView mTvCurrSmoke;
-
-
-    @OnClick(R.id.cv_curtain)
-    void onCurtainClick() {
-
-    }
-
-    @BindView(R.id.iv_fan)
-    ImageView mIvFan;
-
-    @OnClick(R.id.cv_fan)
-    void onFanClick() {
-    }
-
-    @BindView(R.id.iv_alarm)
-    ImageView mIvAlarm;
-
-    @OnClick(R.id.cv_alarm)
-    void onAlarmClick() {
-    }
+    @BindView(R.id.sv_curtain)
+    SwitchView mSvCurtain;
+    @BindView(R.id.sv_fan)
+    SwitchView mSvFan;
+    @BindView(R.id.sv_alarm)
+    SwitchView mSvAlarm;
 
 
     @Override
@@ -111,6 +90,28 @@ public class MainActivity extends BaseActivity implements IMainView {
         // 程序启动后需要刷新状态
 //        mSflMain.setRefreshing(true);
 //        mMainPresenter.onRefresh();
+
+        mSvCurtain.setOnSwitchListener(new SwitchView.OnSwitchListener() {
+            @Override
+            public void onSwitch(boolean currIsOpen) {
+                mMainPresenter.switchCurtain(currIsOpen);
+            }
+        });
+
+        mSvFan.setOnSwitchListener(new SwitchView.OnSwitchListener() {
+            @Override
+            public void onSwitch(boolean currIsOpen) {
+                mMainPresenter.switchFan(currIsOpen);
+            }
+        });
+
+        mSvAlarm.setOnSwitchListener(new SwitchView.OnSwitchListener() {
+            @Override
+            public void onSwitch(boolean currIsOpen) {
+                mMainPresenter.switchAlarm(currIsOpen);
+            }
+        });
+
     }
 
     @Override
@@ -138,6 +139,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         mTvCurrTmp.setText(itemsBean.getMTemperature() + "℃");
         mTvCurrHumi.setText(itemsBean.getMHumidity() + "%");
         mTvCurrSmoke.setText(itemsBean.getMSmoke() + "");
+        mSvCurtain.setOpen(Boolean.valueOf(itemsBean.getMCurtainState()));
     }
 
     @Override
