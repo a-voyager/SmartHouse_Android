@@ -85,7 +85,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="31"
+                        android:text="28"
                         android:textSize="12sp"/>
 
                 </LinearLayout>
@@ -99,7 +99,7 @@
                     android:id="@+id/tv_advice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="温度适中,建议着长袖服装"
+                    android:text="温度适中,建议着短袖服装"
                     android:textSize="12sp"/>
 
             </LinearLayout>

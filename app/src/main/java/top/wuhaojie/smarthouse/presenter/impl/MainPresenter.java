@@ -7,6 +7,9 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javax.inject.Inject;
 
 import rx.Subscriber;
@@ -27,6 +30,7 @@ public class MainPresenter implements IPresenter {
 
     private Context mContext;
     private IMainView mIMainView;
+    private boolean isFirst = true;
 
     @Inject
     public MainPresenter(@ContextLifeCycle("Activity") Context context) {
@@ -118,22 +122,28 @@ public class MainPresenter implements IPresenter {
     private void alarmTmpHum(int mTemperature) {
         if (mTemperature > Constants.MAX_TEMPPERATURE) {
             mIMainView.setTmpIcon2Red();
-            mIMainView.showSnackBarAction("温度过高, 即将开启窗户", "撤销", new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mHandler.removeMessages(OPEN_WINDOW);
-                }
-            });
-            mHandler.sendEmptyMessageDelayed(OPEN_WINDOW, 2000);
+            if (isFirst) {
+                mIMainView.showSnackBarAction("温度过高, 即将开启窗户", "撤销", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mHandler.removeMessages(OPEN_WINDOW);
+                    }
+                });
+                mHandler.sendEmptyMessageDelayed(OPEN_WINDOW, 2000);
+                isFirst = false;
+            }
         } else if (mTemperature < Constants.MIN_TEMPPERATURE) {
-            mIMainView.setTmpIcon2Blue();
-            mIMainView.showSnackBarAction("温度过低, 即将关闭窗户", "撤销", new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mHandler.removeMessages(CLOSE_WINDOW);
-                }
-            });
-            mHandler.sendEmptyMessageDelayed(CLOSE_WINDOW, 2000);
+            if (isFirst) {
+                mIMainView.setTmpIcon2Blue();
+                mIMainView.showSnackBarAction("温度过低, 即将关闭窗户", "撤销", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mHandler.removeMessages(CLOSE_WINDOW);
+                    }
+                });
+                mHandler.sendEmptyMessageDelayed(CLOSE_WINDOW, 2000);
+                isFirst = false;
+            }
         } else {
             mIMainView.setTmpIcon2Blue();
         }
@@ -164,6 +174,16 @@ public class MainPresenter implements IPresenter {
             HttpHelper.getInstance().sendControlMessage(Constants.COMMAND_OPEN_ALARM);
         else
             HttpHelper.getInstance().sendControlMessage(Constants.COMMAND_CLOSE_ALARM);
+    }
+
+    public void TimerReFresh() {
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                onRefresh();
+            }
+        };
+        new Timer().schedule(timerTask, 2000, 2000);
     }
 
     private static class MyHandler extends Handler {

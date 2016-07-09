@@ -80,7 +80,7 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     public void initViews(Bundle savedInstanceState) {
-        mSflMain.setColorSchemeResources(R.color.blue01, R.color.green01, R.color.red01, R.color.orange01);
+        mSflMain.setColorSchemeResources(R.color.orange01, R.color.green01, R.color.red01, R.color.blue01);
         mSflMain.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -88,8 +88,11 @@ public class MainActivity extends BaseActivity implements IMainView {
             }
         });
         // 程序启动后需要刷新状态
-//        mSflMain.setRefreshing(true);
-//        mMainPresenter.onRefresh();
+        mSflMain.setRefreshing(true);
+        mMainPresenter.onRefresh();
+        // 定时刷新状态
+        mMainPresenter.TimerReFresh();
+
 
         mSvCurtain.setOnSwitchListener(new SwitchView.OnSwitchListener() {
             @Override
