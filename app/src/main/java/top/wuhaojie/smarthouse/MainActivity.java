@@ -142,7 +142,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         mTvCurrTmp.setText(itemsBean.getMTemperature() + "℃");
         mTvCurrHumi.setText(itemsBean.getMHumidity() + "%");
         mTvCurrSmoke.setText(itemsBean.getMSmoke() + "");
-        mSvCurtain.setOpen(Boolean.valueOf(itemsBean.getMCurtainState()));
+//        mSvCurtain.setOpen(Boolean.valueOf(itemsBean.getMCurtainState()));
     }
 
     @Override
